@@ -183,7 +183,7 @@ class S3BotoStorage(Storage):
         # async support library we're using periodically to prevent timeouts.
         k.set_contents_from_file(content, headers=headers, policy=self.acl,
                                  cb=self.s3_callback_during_upload,
-                                 num_cb=-1)
+                                 num_cb=-1, rewind=True)
         return name
 
     def delete(self, name):
